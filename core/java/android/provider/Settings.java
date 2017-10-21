@@ -4780,6 +4780,13 @@ public final class Settings {
          */
         public static final String FULL_GESTURE_NAVBAR_DT2S = "full_gesture_navbar_dt2s";
 
+       /**
+        * Statusbar logo Style
+        * @hide
+         */
+        public static final String STATUS_BAR_LOGO_STYLE = "status_bar_logo_style";
+
+
         /**
          * Three Finger Gesture from Oppo
          * @hide
