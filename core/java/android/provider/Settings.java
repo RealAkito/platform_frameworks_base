@@ -5500,6 +5500,16 @@ public final class Settings {
         public static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
 
         /**
+         * Whether to invert navigation bar buttons
+         * @hide
+         */
+        public static final String NAV_BAR_INVERSE = "navbar_inverse";
+
+        /** @hide */
+        public static final Validator NAV_BAR_INVERSE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5781,6 +5791,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_FORMAT);
             PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
             PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
+            PRIVATE_SETTINGS.add(NAV_BAR_INVERSE);
         }
 
         /**
@@ -5936,6 +5947,7 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_FORMAT, STATUSBAR_CLOCK_DATE_FORMAT_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_LOGO, STATUS_BAR_LOGO_VALIDATOR);
             VALIDATORS.put(FORCE_FULLSCREEN_CUTOUT_APPS, FORCE_FULLSCREEN_CUTOUT_APPS_VALIDATOR);
+            VALIDATORS.put(NAV_BAR_INVERSE, NAV_BAR_INVERSE_VALIDATOR);
         }
 
         /**

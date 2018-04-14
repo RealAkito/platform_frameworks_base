@@ -5737,6 +5737,9 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAV_BAR_INVERSE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -5744,7 +5747,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             super.onChange(selfChange, uri);
             if (uri.equals(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_SHOW))) {
-                updateNavigationBar();
+                updateNavigationBar(false, false);
             }else if (uri.equals(Settings.System.getUriFor(Settings.System.DISPLAY_CUTOUT_HIDDEN))) {
                 updateCutoutOverlay();
             } else if (uri.equals(Settings.System.getUriFor(
@@ -5799,11 +5802,13 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                 Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG))) {
                 setMaxKeyguardNotifConfig();
+            }else if (uri.equals(Settings.System.getUriFor(Settings.System.NAV_BAR_INVERSE))) {
+                reloadNavigationBar();
             }
         }
 
         public void update() {
-            updateNavigationBar();
+            updateNavigationBar(false, false);
             updateCutoutOverlay();
             setLockscreenDoubleTapToSleep();
             setHeadsUpStoplist();
@@ -5820,14 +5825,27 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
     }
 
-    private void updateNavigationBar() {
+    private boolean isNavbarReloading = false;
+    private void reloadNavigationBar(){
+        if (!NavbarUtils.isEnabled(mContext) || isNavbarReloading){
+            return;
+        }
+        isNavbarReloading = true;
+        updateNavigationBar(true, false);
+        mHandler.postDelayed(() -> {
+            updateNavigationBar(true, true);
+            isNavbarReloading = false;
+        }, 1000);
+    }
+
+    private void updateNavigationBar(boolean force, boolean newValue) {
         int showNavBar = Settings.System.getIntForUser(
                 mContext.getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW,
                  -1, UserHandle.USER_CURRENT);
-        if (showNavBar != -1){
+        if (showNavBar != -1 || force){
             boolean showNavBarBool = showNavBar == 1;
-            if (showNavBarBool !=  mShowNavBar){
-                  mShowNavBar = NavbarUtils.isEnabled(mContext);
+            if (showNavBarBool !=  mShowNavBar || force){
+                  mShowNavBar = force ? newValue : NavbarUtils.isEnabled(mContext);
                   if (DEBUG) Log.v(TAG, "updateNavigationBar=" + mShowNavBar);
                   if (mShowNavBar) {
                     if (mNavigationBarView == null) {
