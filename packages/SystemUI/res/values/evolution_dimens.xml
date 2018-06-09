@@ -64,4 +64,8 @@
 
     <dimen name="quick_status_bar_system_icons_margin_top">8dp</dimen>
 
+    <!-- Ambient clock padding workaround -->
+    <dimen name="ambient_clock_forced_top_padding">10dp</dimen>
+    <dimen name="ambient_clock_forced_bottom_padding">0dp</dimen>
+
 </resources>
