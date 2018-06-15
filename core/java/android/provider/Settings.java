@@ -5386,18 +5386,28 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
+        /** @hide */
+        private static final Validator LOCKSCREEN_CLOCK_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
         /**
          * Whether to hide the items underneath the lockscreen clock
          * @hide
          */
         public static final String LOCKSCREEN_INFO = "lockscreen_info";
+        /** @hide */
+        private static final Validator LOCKSCREEN_INFO_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
         /**
          * Select which lockscreen clock style to display
          * @hide
          */
         public static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
+
+        /** @hide */
+        public static final Validator LOCKSCREEN_CLOCK_SELECTION_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 6);
 
         /** End of Evolution X system settings**/
 
