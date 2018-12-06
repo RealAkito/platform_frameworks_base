@@ -5418,6 +5418,15 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to display the evox logo in the statusbar
+         * @hide
+         */
+        public static final String STATUS_BAR_LOGO = "status_bar_logo";
+        /** @hide */
+        private static final Validator STATUS_BAR_LOGO_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5504,6 +5513,7 @@ public final class Settings {
             VIBRATE_ON_CALLWAITING,
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
             MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
+            STATUS_BAR_LOGO,
             STATUS_BAR_CLOCK,
             STATUSBAR_CLOCK_STYLE,
             STATUS_BAR_CLOCK_SECONDS,
@@ -5578,6 +5588,7 @@ public final class Settings {
             PUBLIC_SETTINGS.add(HAPTIC_FEEDBACK_ENABLED);
             PUBLIC_SETTINGS.add(SHOW_WEB_SUGGESTIONS);
             PUBLIC_SETTINGS.add(VIBRATE_WHEN_RINGING);
+            PUBLIC_SETTINGS.add(STATUS_BAR_LOGO);
         }
 
         /**
@@ -5844,6 +5855,7 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_DISPLAY, STATUSBAR_CLOCK_DATE_DISPLAY_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_STYLE, STATUSBAR_CLOCK_DATE_STYLE_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_FORMAT, STATUSBAR_CLOCK_DATE_FORMAT_VALIDATOR);
+            VALIDATORS.put(STATUS_BAR_LOGO, STATUS_BAR_LOGO_VALIDATOR);
         }
 
         /**
