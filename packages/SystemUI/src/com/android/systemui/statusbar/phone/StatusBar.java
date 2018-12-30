@@ -5677,6 +5677,12 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     Settings.System.NAV_BAR_INVERSE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_CLOCK),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_INFO),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.THEME_DARK_STYLE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -5718,6 +5724,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 updateCutoutOverlay();
             }else if (uri.equals(Settings.System.getUriFor(Settings.System.NAV_BAR_INVERSE))) {
                 reloadNavigationBar();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK)) ||
+                   uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_INFO))) {
+                updateKeyguardStatusSettings();
             }else if (uri.equals(Settings.System.getUriFor(Settings.System.THEME_DARK_STYLE))) {
                 updateDarkThemeStyle();
                 updateTheme(false, true);
@@ -5745,6 +5754,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         }
 
         public void update() {
+            updateKeyguardStatusSettings();
             updateSettings();
             updateNavigationBar(false, false);
             updateCutoutOverlay();
@@ -5757,6 +5767,10 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             setHeadsUpStoplist();
             setHeadsUpBlacklist();
         }
+    }
+
+    private void updateKeyguardStatusSettings() {
+        mNotificationPanel.updateKeyguardStatusSettings();
     }
 
     private void updateSettings(){

@@ -5381,6 +5381,18 @@ public final class Settings {
          */
         public static final String ENABLE_SUGGESTIONS = "enable_suggestions";
 
+        /**
+         * Whether to hide the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
+
+        /**
+         * Whether to hide the items underneath the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_INFO = "lockscreen_info";
+
         /** End of Evolution X system settings**/
 
         /**
