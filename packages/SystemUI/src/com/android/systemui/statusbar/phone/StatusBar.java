@@ -5683,6 +5683,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     Settings.System.LOCKSCREEN_INFO),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_CLOCK_SELECTION),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.THEME_DARK_STYLE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -5725,7 +5728,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             }else if (uri.equals(Settings.System.getUriFor(Settings.System.NAV_BAR_INVERSE))) {
                 reloadNavigationBar();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK)) ||
-                   uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_INFO))) {
+                   uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_INFO)) ||
+                   uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK_SELECTION))) {
                 updateKeyguardStatusSettings();
             }else if (uri.equals(Settings.System.getUriFor(Settings.System.THEME_DARK_STYLE))) {
                 updateDarkThemeStyle();
