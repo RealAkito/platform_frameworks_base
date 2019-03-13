@@ -164,8 +164,13 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
     }
 
     private void updateAnimator(int width) {
-        int endMargin = (mInfo.visible ? mContext.getResources().getDimensionPixelSize(R.dimen.qs_footer_mobilegroup_margin_end) : 0);
-        int sum = endMargin + (mInfo.visible ? mMobileGroup.getWidth() : 0);
+        int numTiles = mQuickQSPanel.getNumQuickTiles();
+        int size = mContext.getResources().getDimensionPixelSize(R.dimen.qs_quick_tile_size)
+                - mContext.getResources().getDimensionPixelSize(dimen.qs_quick_tile_padding);
+        int remaining = (width - numTiles * size) / (numTiles - 1);
+        int defSpace = mContext.getResources().getDimensionPixelOffset(R.dimen.default_gear_space);
+        int endMargin = mContext.getResources().getDimensionPixelSize(R.dimen.qs_footer_mobilegroup_margin_end);
+        int sum = endMargin + mMobileGroup.getWidth();
 
         mSettingsCogAnimator = new Builder()
                 .addFloat(mCarrierText, "translationX", -sum, 0)
@@ -294,18 +299,17 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
     }
 
     private void updateVisibilities() {
-        mSettingsContainer.setVisibility(!isSettingsEnabled() || mQsDisabled ? View.GONE : View.VISIBLE);
+        mSettingsContainer.setVisibility(!isSettingsEnabled() ? View.GONE : View.VISIBLE);
+        mSettingsButton.setVisibility(isSettingsEnabled() ? View.VISIBLE : View.GONE);
         final boolean isDemo = UserManager.isDeviceInDemoMode(mContext);
         if (isDemo || !mExpanded) {
             mMultiUserSwitch.setVisibility(View.GONE);
             mEdit.setVisibility(View.GONE);
             mRunningServicesButton.setVisibility(View.GONE);
-            mSettingsButton.setVisibility(View.GONE);
         } else {
             mMultiUserSwitch.setVisibility(showUserSwitcher() ? View.VISIBLE : View.GONE);
             mEdit.setVisibility(isEditEnabled() ? View.VISIBLE : View.GONE);
             mRunningServicesButton.setVisibility(isServicesEnabled() ? View.VISIBLE : View.GONE);
-            mSettingsButton.setVisibility(isSettingsEnabled() ? View.VISIBLE : View.GONE);
         }
     }
 
