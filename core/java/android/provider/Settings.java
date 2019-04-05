@@ -5407,7 +5407,7 @@ public final class Settings {
 
         /** @hide */
         public static final Validator LOCKSCREEN_CLOCK_SELECTION_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 6);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 16);
 
         /** End of Evolution X system settings**/
 
