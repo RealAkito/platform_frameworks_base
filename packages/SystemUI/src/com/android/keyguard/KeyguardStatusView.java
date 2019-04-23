@@ -448,224 +448,106 @@ public class KeyguardStatusView extends GridLayout implements
     }
 
     private void updateVisibilities() {
+        mClockView.setVisibility(View.GONE);
+        mCustomClockView.setVisibility(View.GONE);
+        mTextClock.setVisibility(View.GONE);
+        final int mClockVisibility = mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
+                       View.GONE) : View.VISIBLE;
         switch (mClockSelection) {
-            case 0: // default digital
-            default:
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.setLineSpacing(0,1f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
-                break;
-            case 1: // digital (bold)
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.setLineSpacing(0,1f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
-                break;
             case 2: // custom analog
-                mCustomClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.setLineSpacing(0,1f);
-                mClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
+                mCustomClockView.setVisibility(mClockVisibility);
                 break;
             case 3: // sammy
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
-                break;
             case 4: // sammy (bold)
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
+                    getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
+                mClockView.setLineSpacing(0, 0.8f);
                 break;
             case 5: // sammy accent
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_sammy_accent_font_size));
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
-                break;
             case 6: // sammy accent bold
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_sammy_accent_font_size));
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                break;
             case 7: // sammy accent alt
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_sammy_accent_font_size));
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
-                break;
             case 8: // sammy accent alt bold
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setBackgroundResource(0);
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_sammy_accent_font_size));
-                mClockView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
+                    getResources().getDimensionPixelSize(R.dimen.widget_sammy_accent_font_size));
+                mClockView.setLineSpacing(0, 0.8f);
                 break;
             case 9: // shishu normal 01
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_shishu_normalbg));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.setPadding(20,20,20,20);
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE : View.GONE) : View.VISIBLE);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_shishu_accent_font_size));
-                mClockView.setLineSpacing(0,0.8f);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
+                    getResources().getDimensionPixelSize(R.dimen.widget_shishu_accent_font_size));
+                mClockView.setLineSpacing(0, 0.8f);
                 break;
             case 10: // shishu immensity
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_shishu_diamondbg));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
-                mClockView.setLineSpacing(0,1f);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_shishu_inmensity_font_size));
+                    getResources().getDimensionPixelSize(R.dimen.widget_shishu_inmensity_font_size));
                 mClockView.setPadding(20,20,20,20);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
                 break;
             case 11: // shishu nerves
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_shishu_nerves_bg));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_width);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_height);
-                mClockView.setLineSpacing(0,1f);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_font_size));
+                    getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_font_size));
                 mClockView.setPadding(0,20,0,20);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
                 break;
             case 12: // shishu gradient (normal)
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_bootleg_gradient));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
-                mClockView.setLineSpacing(0,1f);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_shishu_accent_font_size));
+                    getResources().getDimensionPixelSize(R.dimen.widget_shishu_accent_font_size));
                 mClockView.setPadding(0,20,0,20);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
                 break;
             case 13: // shishu gradient (With shishu color)
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_bootleg_gradient_shishu));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
-                mClockView.setLineSpacing(0,1f);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_shishu_accent_font_size));
+                    getResources().getDimensionPixelSize(R.dimen.widget_shishu_accent_font_size));
                 mClockView.setPadding(0,20,0,20);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
                 break;
             case 14: // Gradient with dark clock
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_bootleg_gradient_shadow));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
-                mClockView.setLineSpacing(0,1f);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_font_size));
+                    getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_font_size));
                 mClockView.setPadding(0,20,0,20);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
                 break;
             case 15: // Monochrome gradient, like the qs tile
-                mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
+                mClockView.setVisibility(mClockVisibility);
                 mClockView.setBackground(getResources().getDrawable(R.drawable.clock_bootleg_qsgradient));
                 mClockView.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
                 mClockView.getLayoutParams().height = getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_size);
-                mClockView.setLineSpacing(0,1f);
                 mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_font_size));
+                    getResources().getDimensionPixelSize(R.dimen.widget_clock_shishu_nerves_font_size));
                 mClockView.setPadding(0,20,0,20);
-                mCustomClockView.setVisibility(View.GONE);
-                mTextClock.setVisibility(View.GONE);
                 break;
             case 16: // custom text clock
-                mTextClock.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       View.GONE) : View.VISIBLE);
-                mClockView.setVisibility(View.GONE);
-                mCustomClockView.setVisibility(View.GONE);
+                mTextClock.setVisibility(mClockVisibility);
+                break;
+            case 0: // default digital
+            case 1: // digital (bold)
+            default:
+                mClockView.setVisibility(mClockVisibility);
+                mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
+                mClockView.setLineSpacing(0, 1f);
+                break;
         }
     }
 
@@ -684,89 +566,38 @@ public class KeyguardStatusView extends GridLayout implements
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                 mKeyguardSlice.getLayoutParams();
         switch (mClockSelection) {
-            case 0: // default digital
-            default:
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(true);
-                mClockView.setGravity(Gravity.CENTER);
+            case 2: // custom analog
+                params.addRule(RelativeLayout.BELOW, R.id.custom_clock_view);
                 break;
+            case 16: // custom text clock
+                params.addRule(RelativeLayout.BELOW, R.id.custom_textclock_view);
+                break;
+            case 0: // default digital
             case 1: // digital (bold)
                 params.addRule(RelativeLayout.BELOW, R.id.clock_view);
                 mClockView.setSingleLine(true);
                 mClockView.setGravity(Gravity.CENTER);
                 break;
-            case 2: // custom analog
-                params.addRule(RelativeLayout.BELOW, R.id.custom_clock_view);
-                break;
             case 3: // sammy
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 4: // sammy (bold)
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 5: // sammy accent
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 6: // sammy accent bold
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 7: // sammy accent alt
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 8: // sammy accent alt bold
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 9: // Shishu normal
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 10: // shishu diamond
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 11: // shishu nerves
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 12: // shishu gradient (normal)
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 13: // shishu gradient (With shishu color)
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 14: // Gradient with dark clock
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 15: // Monochrome gradient, like the qs tile
+            default:
                 params.addRule(RelativeLayout.BELOW, R.id.clock_view);
                 mClockView.setSingleLine(false);
                 mClockView.setGravity(Gravity.CENTER);
-                break;
-            case 16: // custom text clock
-                params.addRule(RelativeLayout.BELOW, R.id.custom_textclock_view);
                 break;
         }
+        mKeyguardSlice.setLayoutParams(params);
 
         updateVisibilities();
         updateDozeVisibleViews();
