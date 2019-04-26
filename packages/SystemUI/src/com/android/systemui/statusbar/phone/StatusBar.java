@@ -5724,7 +5724,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.SCREEN_BRIGHTNESS_MODE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.OMNI_USE_OLD_MOBILETYPE),
+                    Settings.System.USE_OLD_MOBILETYPE),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -5781,6 +5781,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_ALBUM_ART_FILTER))) {
                 updateLockscreenFilter();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.USE_OLD_MOBILETYPE))) {
+                setOldMobileType();
+                mCommandQueue.restartUI();
             }
         }
 
@@ -5797,10 +5801,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             setForceAmbient();
             updateLockscreenFilter();
             setBrightnessSlider();
-            USE_OLD_MOBILETYPE = Settings.System.getIntForUser(mContext.getContentResolver(),
-	            Settings.System.OMNI_USE_OLD_MOBILETYPE, 0,
-        	    UserHandle.USER_CURRENT) != 0;
-            TelephonyIcons.updateIcons(USE_OLD_MOBILETYPE);
+            setOldMobileType();
         }
     }
 
@@ -5834,6 +5835,13 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (mStatusBarWindow != null) {
             mStatusBarWindow.setLockscreenDoubleTapToSleep();
         }
+    }
+
+    private void setOldMobileType() {
+        USE_OLD_MOBILETYPE = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.USE_OLD_MOBILETYPE, 0,
+                UserHandle.USER_CURRENT) != 0;
+        TelephonyIcons.updateIcons(USE_OLD_MOBILETYPE);
     }
 
     private void setFpToDismissNotifications() {
