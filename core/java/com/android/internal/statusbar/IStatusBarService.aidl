@@ -106,6 +106,7 @@ interface IStatusBarService
     /**
      * Custom utils
      * PixysOS
+     * Evolution X
      */
     void toggleCameraFlash();
     void restartUI();

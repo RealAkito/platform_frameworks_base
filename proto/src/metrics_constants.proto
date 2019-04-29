@@ -6500,9 +6500,9 @@ message MetricsEvent {
     // CustomSettings constant
     CUSTOM_SETTINGS = 1554;
 
-    // PIXYS custom constants
-    PIXYS = 1555;
-    PIXYS_SETTINGS = 1556;
+    // Evolution X custom constants
+    EVOX = 1555;
+    EVOX_SETTINGS = 1556;
 
   }
 }
