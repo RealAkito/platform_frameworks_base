@@ -156,6 +156,7 @@ oneway interface IStatusBar
     /**
      * Custom utils
      * PixysOS
+     * Evolution X
      */
     void toggleCameraFlash();
 }

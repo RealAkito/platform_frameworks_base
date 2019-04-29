@@ -68,7 +68,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.PIXYS_SETTINGS;
+        return MetricsEvent.EVOX;
     }
 
     @Override
