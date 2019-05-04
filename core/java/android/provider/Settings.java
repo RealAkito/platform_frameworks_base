@@ -4811,6 +4811,12 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
 
+        /**
+         * Center the lockscreen text clock
+         * @hide
+         */
+        public static final String CENTER_TEXT_CLOCK = "center_text_clock";
+
         /** Whether to allow one finger quick settings expansion on the right side of the statusbar.
          *
          * @hide
